@@ -4,12 +4,17 @@
     <size njmax="500" nconmax="100" />
     <compiler angle="radian" />
 
+    <!-- Arguments for Arm 0 Pose -->
+    <xacro:arg name="arm_id_0" default="L_panda" />
     <xacro:arg name="x0" default="0" />
     <xacro:arg name="y0" default="0" />
     <xacro:arg name="z0" default="0" />
     <xacro:arg name="roll0" default="0" />
     <xacro:arg name="pitch0" default="0" />
     <xacro:arg name="yaw0" default="0" />
+    
+    <!-- Arguments for Arm 1 Pose -->
+    <xacro:arg name="arm_id_1" default="R_panda" />
     <xacro:arg name="x1" default="0" />
     <xacro:arg name="y1" default="0" />
     <xacro:arg name="z1" default="0" />
@@ -17,8 +22,13 @@
     <xacro:arg name="pitch1" default="0" />
     <xacro:arg name="yaw1" default="0" />
 
-    <!-- Adds Panda Assets and Default Classes and Macro Definitions -->
+    <!-- Arguments to select suction gripper for each arm -->
+    <xacro:arg name="use_suction_0" default="false" />
+    <xacro:arg name="use_suction_1" default="false" />
+
+    <!-- Include both standard and suction Panda macro definitions -->
     <xacro:include filename="$(find franka_mujoco)/assets/xacro/panda.mujoco.xacro" />
+    <xacro:include filename="$(find franka_mujoco)/assets/xacro/panda_suction.mujoco.xacro" />
 
     <visual>
         <headlight ambient="0.4 0.4 0.4" diffuse="0.4 0.4 0.4" specular="0.0 0.0 0.0" active="1" />
@@ -35,12 +45,38 @@
     </worldbody>
 
     <worldbody>
-        <xacro:panda_robot name="$(arg arm_id_0)" pos="$(arg x0) $(arg y0) $(arg z0)" rot="$(arg roll0) $(arg pitch0) $(arg yaw0)" />
-        <xacro:panda_robot name="$(arg arm_id_1)" pos="$(arg x1) $(arg y1) $(arg z1)" rot="$(arg roll1) $(arg pitch1) $(arg yaw1)" />
+        <!-- Spawn Arm 0: Conditionally use suction or standard robot macro -->
+        <xacro:if value="$(arg use_suction_0)">
+            <xacro:panda_robot_suction name="$(arg arm_id_0)" pos="$(arg x0) $(arg y0) $(arg z0)" rot="$(arg roll0) $(arg pitch0) $(arg yaw0)" />
+        </xacro:if>
+        <xacro:unless value="$(arg use_suction_0)">
+            <xacro:panda_robot name="$(arg arm_id_0)" pos="$(arg x0) $(arg y0) $(arg z0)" rot="$(arg roll0) $(arg pitch0) $(arg yaw0)" />
+        </xacro:unless>
+        
+        <!-- Spawn Arm 1: Conditionally use suction or standard robot macro -->
+        <xacro:if value="$(arg use_suction_1)">
+            <xacro:panda_robot_suction name="$(arg arm_id_1)" pos="$(arg x1) $(arg y1) $(arg z1)" rot="$(arg roll1) $(arg pitch1) $(arg yaw1)" />
+        </xacro:if>
+        <xacro:unless value="$(arg use_suction_1)">
+            <xacro:panda_robot name="$(arg arm_id_1)" pos="$(arg x1) $(arg y1) $(arg z1)" rot="$(arg roll1) $(arg pitch1) $(arg yaw1)" />
+        </xacro:unless>
     </worldbody>
 
-    <!-- Exclude Impossible Self Collision, Add Finger Coupling (Tendon, Equality Constraint) -->
-    <xacro:panda_extra name="$(arg arm_id_0)" />
-    <xacro:panda_extra name="$(arg arm_id_1)" />
+    <!-- Conditionally add extra definitions (collisions, tendons) for each arm -->
+    <!-- Arm 0 -->
+    <xacro:if value="$(arg use_suction_0)">
+        <xacro:panda_extra_suction name="$(arg arm_id_0)" />
+    </xacro:if>
+    <xacro:unless value="$(arg use_suction_0)">
+        <xacro:panda_extra name="$(arg arm_id_0)" />
+    </xacro:unless>
+
+    <!-- Arm 1 -->
+    <xacro:if value="$(arg use_suction_1)">
+        <xacro:panda_extra_suction name="$(arg arm_id_1)" />
+    </xacro:if>
+    <xacro:unless value="$(arg use_suction_1)">
+        <xacro:panda_extra name="$(arg arm_id_1)" />
+    </xacro:unless>
 
 </mujoco>
