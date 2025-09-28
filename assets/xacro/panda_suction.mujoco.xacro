@@ -198,7 +198,7 @@
                                         <geom class="panda_robot_visual" mesh="panda_link7_7_visual" material="panda_white" />
                                         <geom class="panda_robot_collision" mesh="panda_link7_collision" />
                                         <body name="${name}_cobot_pump" pos="0 0 0.107">
-                                            <inertial pos="0 0 0.063" mass="0.101" diaginertia="0.001 0.001 0.001" />
+                                            <inertial pos="0 0 0.063" mass="1.01" diaginertia="0.001 0.001 0.001" />
                                             <geom class="panda_robot_visual" mesh="cobot_pump_visual" material="panda_off_white" />
                                             <geom class="panda_robot_collision" mesh="cobot_pump_collision" />
                                             <site name='${name}_ee_site' pos='0 0 0.105' size="0.005 0.005 0.005" euler='0 0 0' />
