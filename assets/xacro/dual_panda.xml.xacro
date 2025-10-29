@@ -26,6 +26,8 @@
     <xacro:arg name="use_suction_0" default="false" />
     <xacro:arg name="use_suction_1" default="false" />
 
+    <xacro:property name="panda_shared_definitions_loaded" value="false" />
+    
     <!-- Include both standard and suction Panda macro definitions -->
     <xacro:include filename="$(find franka_mujoco)/assets/xacro/panda.mujoco.xacro" />
     <xacro:include filename="$(find franka_mujoco)/assets/xacro/panda_suction.mujoco.xacro" />
