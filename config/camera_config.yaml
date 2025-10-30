@@ -1,0 +1,19 @@
+# This is the base path we will pass to the 'cam_config' parameter
+mujoco_camera_settings:
+
+  # Settings for the Left Panda
+  L_panda_camera:
+    # stream_type: 1 -> RGB only (default)
+    # stream_type: 2 -> Depth only
+    # stream_type: 3 -> RGB + Depth
+    stream_type: 3
+    
+    # You could also override other settings here if you wanted
+    # topic: "my_left_cam"
+    # frequency: 10
+    # width: 1280
+    # height: 720
+
+  # Settings for the Right Panda
+  R_panda_camera:
+    stream_type: 3

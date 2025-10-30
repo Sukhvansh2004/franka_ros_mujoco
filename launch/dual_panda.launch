@@ -21,6 +21,7 @@
   <arg name="interactive_marker"   default="$(eval arg('controller') == 'cartesian_impedance_example_controller')" doc="Should the interactive marker node be started?" />
   <arg name="initial_joint_states" default="$(find franka_mujoco)/config/dual_arm_initial_joint_states.yaml"          doc="Location of param file containing the initial joint states" />
   <arg name="mujoco_plugin_config" default="$(find franka_mujoco)/config/dual_arm_mjplugin_config.yaml"          doc="Location of param file containing the mujoco plugin config" />
+  <arg name="camera_config" default="$(find franka_mujoco)/config/camera_config.yaml" />
   <arg name="use_sim_time" doc="should mujoco publish its simulation time as ros time?"/>
 
   <arg name="arm_id_0" default="L_panda" />
@@ -71,6 +72,8 @@
 
   <rosparam file="$(arg initial_joint_states)" subst_value="true" />
   <rosparam file="$(arg mujoco_plugin_config)" subst_value="true" />
+  <rosparam file="$(arg camera_config)" command="load" />
+  <param name="cam_config" value="mujoco_camera_settings" />
   <group unless="$(arg use_xacro)">
     <include file="$(find mujoco_ros)/launch/launch_server.launch" pass_all_args="true" >
       <arg name="console_config_file"  value="$(find franka_mujoco)/config/rosconsole.config" />

@@ -187,8 +187,8 @@
                                     <geom class="panda_robot_visual" mesh="panda_link7_6_visual" material="panda_black" />
                                     <geom class="panda_robot_visual" mesh="panda_link7_7_visual" material="panda_white" />
                                     <geom class="panda_robot_collision" mesh="panda_link7_collision" />
-                                    <xacro:panda_camera name="${name}" pos="0.1 -0.1 0.1159" quat="0.924  0.0  0.0 -0.383"/>
-                                    <!-- <body name="${name}_hand" pos="0 0 0.107" quat="0.924  0.0  0.0 -0.383">
+                                    <xacro:panda_camera name="${name}" pos="0.05 0.0 0.1159" quat="0.924  0.0  0.0 -0.383"/>
+                                    <body name="${name}_hand" pos="0 0 0.107" quat="0.924  0.0  0.0 -0.383">
                                         <inertial pos="-0.01 0 0.03" mass="0.73" diaginertia="0.001 0.0025 0.0017" />
                                         <geom class="panda_robot_visual" mesh="panda_hand_0_visual" material="panda_off_white" />
                                         <geom class="panda_robot_visual" mesh="panda_hand_1_visual" material="panda_black" />
@@ -222,7 +222,7 @@
                                                 <geom class="panda_robot_fingertip_pad_collision_5" />
                                             </body>
                                         </body>
-                                    </body> -->
+                                    </body>
                                 </body>
                             </body>
                         </body>
