@@ -1,0 +1,8 @@
+<mujoco xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="panda_camera" params="name pos:='0 0 0.1159' quat:='0.70710678 0 0.70710678 0'">
+    <body name="${name}_camera" pos="${pos}" quat="${quat}">
+      <geom type="box" size="0.0125 0.045 0.0125" rgba="0.5 0.5 0.5 1"/>
+      <camera name="${name}_camera" mode="fixed" pos="0 0 0" fovy="87"/>
+    </body>
+  </xacro:macro>
+</mujoco>
