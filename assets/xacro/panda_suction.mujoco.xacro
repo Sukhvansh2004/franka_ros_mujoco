@@ -5,7 +5,7 @@
         <xacro:property name="panda_shared_definitions_loaded" value="true" />
 
         <xacro:include filename="panda_camera.mujoco.xacro"/>
-        
+
         <asset>
             <material class="panda_robot" name="panda_white" rgba="1 1 1 1" />
             <material class="panda_robot" name="panda_off_white" rgba="0.901961 0.921569 0.929412 1" />
@@ -200,8 +200,8 @@
                                         <geom class="panda_robot_visual" mesh="panda_link7_6_visual" material="panda_black" />
                                         <geom class="panda_robot_visual" mesh="panda_link7_7_visual" material="panda_white" />
                                         <geom class="panda_robot_collision" mesh="panda_link7_collision" />
-                                        <body name="${name}_camera_link_fix" pos="0.05 0.0 0.1159" quat="0.92388 0 0 -0.38268">    
-                                            <xacro:panda_camera name="${name}" />
+                                        <body name="${name}_camera_link_fix" pos="0 0 0" quat="0.92388 0 0 -0.38268">    
+                                            <xacro:panda_camera name="${name}" pos="0.055 0.0 0.15" />
                                         </body>
                                         <body name="${name}_cobot_pump" pos="0 0 0.107">
                                             <inertial pos="0 0 0.063" mass="1.01" diaginertia="0.001 0.001 0.001" />
