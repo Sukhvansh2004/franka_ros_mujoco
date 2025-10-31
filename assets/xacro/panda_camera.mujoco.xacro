@@ -1,18 +1,16 @@
 <mujoco xmlns:xacro="http://ros.org/wiki/xacro">
-  <xacro:macro name="panda_camera" params="name pos:='0 0 0' euler:='180 -90 0'">
-
-    <body name="${name}_camera_link_mj" pos="${pos}" euler="${euler}">
-
-      <geom name="${name}_camera_visual" type="box" size="0.0125 0.045 0.0125" rgba="1 0 0 1" group="2" contype="0" conaffinity="0"/>
-      <geom name="${name}_camera_collision" type="box" size="0.0125 0.045 0.0125" rgba="0 0 0 0" group="3"/>
-
-      <inertial pos="0 0 0" mass="0.095" fullinertia="0.0001 0.0001 0.0001 0 0 0" />
-
-      <camera name="${name}_camera" mode="fixed" pos="0 0 0" euler="-90 0 -90" fovy="87"/>
-
-      <body name="${name}_camera_depth_frame_mj" pos="0 0 0" euler="-90 0 -90"/>
-      <body name="${name}_camera_color_frame_mj" pos="0 0 0" euler="-90 0 -90"/>
-      
+  <xacro:macro name="panda_camera" params="name pos:='0 0 0' quat:='0 0.707107 0 0.707107'">
+    <body name="${name}_camera_link" pos="${pos}" quat="${quat}">
+        <geom name="${name}_camera_visual" type="box" size="0.0125 0.045 0.0125" rgba="1 0 0 1" group="2" contype="0" conaffinity="0"/>
+        <geom name="${name}_camera_collision" type="box" size="0.0125 0.045 0.0125" rgba="0 0 0 0" group="3"/>
+        <inertial pos="0 0 0" mass="0.095" fullinertia="0.0001 0.0001 0.0001 0 0 0" />
+        
+        <body name="${name}_camera_depth_frame" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5">
+            <site name="${name}_camera_depth_site" pos="0 0 0" size="0.005 0.005 0.005" euler="0 0 0"/>
+            <camera name="${name}_camera" mode="fixed" pos="0 0 0" quat="0 1 0 0" fovy="70.866"/>
+        </body>
+        
+        <body name="${name}_camera_color_frame" pos="0 0 0" quat="0.5 -0.5 0.5 -0.5"/>
     </body>
   </xacro:macro>
 </mujoco>
