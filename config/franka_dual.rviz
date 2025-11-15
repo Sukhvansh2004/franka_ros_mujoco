@@ -11,7 +11,7 @@ Panels:
         - /DepthCloud1/Auto Size1
         - /DepthCloud2/Auto Size1
         - /PoseArray1
-        - /Image1/Status1
+        - /Image1
       Splitter Ratio: 0.5
     Tree Height: 327
   - Class: rviz/Selection
@@ -651,7 +651,7 @@ Visualization Manager:
       Shaft Length: 0.23000000417232513
       Shaft Radius: 0.009999999776482582
       Shape: Arrow (3D)
-      Topic: /grasp_prediction_node_client/L_panda/predicted_grasps
+      Topic: /L_panda/inferred_grasp_poses
       Unreliable: false
       Value: true
     - Class: rviz/Image
@@ -732,5 +732,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1619
-  X: -5
+  X: 128
   Y: -32
