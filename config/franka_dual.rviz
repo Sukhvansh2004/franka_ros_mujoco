@@ -7,6 +7,7 @@ Panels:
         - /Global Options1
         - /Status1
         - /TF1
+        - /TF1/Frames1
         - /DepthCloud1/Auto Size1
         - /DepthCloud2/Auto Size1
         - /PoseArray1
@@ -272,7 +273,7 @@ Visualization Manager:
         L_panda_rightfinger:
           Value: false
         R_panda_EE:
-          Value: false
+          Value: true
         R_panda_K:
           Value: false
         R_panda_NE:
@@ -651,12 +652,12 @@ Visualization Manager:
       Shaft Length: 0.23000000417232513
       Shaft Radius: 0.009999999776482582
       Shape: Arrow (3D)
-      Topic: /L_panda/inferred_grasp_poses
+      Topic: /R_panda/inferred_grasp_poses
       Unreliable: false
       Value: true
     - Class: rviz/Image
       Enabled: true
-      Image Topic: /L_panda/fastsam_client_node/fastsam/visualization
+      Image Topic: /R_panda/fastsam_client_node/fastsam/visualization
       Max Value: 1
       Median window: 5
       Min Value: 0
@@ -679,7 +680,7 @@ Visualization Manager:
       Shaft Length: 0.30000001192092896
       Shaft Radius: 0.05000000074505806
       Shape: Axes
-      Topic: /L_panda/cartesian_impedance_example_controller/equilibrium_pose
+      Topic: /R_panda/cartesian_impedance_example_controller/equilibrium_pose
       Unreliable: false
       Value: true
   Enabled: true
@@ -710,7 +711,7 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 2.4110283851623535
+      Distance: 2.0911524295806885
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
@@ -726,9 +727,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.29539820551872253
+      Pitch: 0.37039855122566223
       Target Frame: <Fixed Frame>
-      Yaw: 1.940390706062317
+      Yaw: 1.4103896617889404
     Saved: ~
 Window Geometry:
   Displays:
@@ -748,5 +749,5 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1619
-  X: 14
+  X: 44
   Y: -32
